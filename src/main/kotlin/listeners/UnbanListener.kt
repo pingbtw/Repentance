@@ -12,7 +12,7 @@ class UnbanListener {
         if (event.guild.idLong == RepentanceConfig.primaryGuild && checkNewJoinHasAppealed(event.user.id.toString())) {
             removeAppeal(event.user.id.toString())
             event.jda.getGuildById(RepentanceConfig.appealGuild).getTextChannelById(RepentanceConfig.appealResponseChannel)
-                    .sendMessage("<@${event.user.id} you have been unbanned! Click here to re-join - ${RepentanceConfig.inviteLink}")
+                    .sendMessage("${event.user.asMention} you have been unbanned! Click here to re-join - ${RepentanceConfig.inviteLink}")
         }
     }
 }

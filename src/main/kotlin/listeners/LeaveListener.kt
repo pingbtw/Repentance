@@ -11,7 +11,7 @@ class LeaveListener {
         if (event.guild.idLong == RepentanceConfig.appealGuild && checkNewJoinHasAppealed(event.user.id.toString())) {
             removeAppeal(event.user.id.toString())
             event.jda.getGuildById(RepentanceConfig.primaryGuild).getTextChannelById(RepentanceConfig.appealChannel)
-                    .sendMessage("<@${event.user.id}>" +
+                    .sendMessage("$event.user.asMention" +
                     " has left and their appeal has been removed.").queue()
         }
     }

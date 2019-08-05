@@ -13,7 +13,7 @@ class JoinListener {
 
         if (event.guild.idLong == RepentanceConfig.appealGuild && checkNewJoinHasAppealed(userId)) {
             event.jda.getGuildById(RepentanceConfig.primaryGuild).getTextChannelById(RepentanceConfig.appealChannel)
-                    .sendMessage("<@${event.user.id}> has requested an un-ban").queue()
+                    .sendMessage("${event.user.asMention} has requested an un-ban").queue()
         }
 
         if (event.guild.idLong == RepentanceConfig.appealGuild && !checkNewJoinHasAppealed(userId)) {
@@ -26,7 +26,7 @@ class JoinListener {
             event.jda.getGuildById(RepentanceConfig.appealGuild).controller.kick(event.user.id.toString()).queue()
             event.jda.getGuildById(RepentanceConfig.appealGuild)
                     .getTextChannelById(RepentanceConfig.appealResponseChannel)
-                    .sendMessage("<@${event.user.id}> has been un-banned and removed from guild.").queue()
+                    .sendMessage("${event.user.asMention} has been un-banned and removed from guild.").queue()
         }
     }
 
