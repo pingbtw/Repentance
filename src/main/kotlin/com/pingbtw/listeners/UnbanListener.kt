@@ -1,9 +1,10 @@
-package listeners
+package com.pingbtw.listeners
 
 import com.google.common.eventbus.Subscribe
+import com.pingbtw.RepentanceConfig
 import net.dv8tion.jda.core.events.guild.GuildUnbanEvent
-import utilities.checkNewJoinHasAppealed
-import utilities.removeAppeal
+import com.pingbtw.utilities.checkNewJoinHasAppealed
+import com.pingbtw.utilities.removeAppeal
 
 class UnbanListener {
 

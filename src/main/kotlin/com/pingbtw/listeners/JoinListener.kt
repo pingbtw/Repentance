@@ -1,11 +1,13 @@
-package listeners
+package com.pingbtw.listeners
 
 import com.google.common.eventbus.Subscribe
+import com.pingbtw.RepentanceConfig
 import net.dv8tion.jda.core.entities.User
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent
-import utilities.checkNewJoinHasAppealed
+import com.pingbtw.utilities.checkNewJoinHasAppealed
 
 class JoinListener {
+
     @Subscribe
     fun onGuildMemberJoinEvent(event: GuildMemberJoinEvent) {
 

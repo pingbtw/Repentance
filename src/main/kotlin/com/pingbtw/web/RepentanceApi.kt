@@ -1,9 +1,9 @@
-package web
+package com.pingbtw.web
 
 
 import com.google.gson.Gson
 import spark.kotlin.*
-import utilities.submitAppeal
+import com.pingbtw.utilities.submitAppeal
 
 
 data class RequestData(

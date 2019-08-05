@@ -1,5 +1,6 @@
-package utilities
+package com.pingbtw.utilities
 
+import com.pingbtw.RepentanceConfig
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
