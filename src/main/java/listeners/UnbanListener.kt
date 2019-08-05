@@ -9,9 +9,9 @@ class UnbanListener {
 
     @Subscribe
     fun onGuildUnbanEvent(event: GuildUnbanEvent) {
-        if (event.guild.idLong == 607669856925515808 && checkNewJoinHasAppealed(event.user.id.toString())) {
+        if (event.guild.idLong == RepentanceConfig.primaryGuild && checkNewJoinHasAppealed(event.user.id.toString())) {
             removeAppeal(event.user.id.toString())
-            event.jda.getGuildById(438424678630162453).getTextChannelById(554101865210445855)
+            event.jda.getGuildById(RepentanceConfig.appealGuild).getTextChannelById(RepentanceConfig.appealResponseChannel)
                     .sendMessage("<@${event.user.id} you have been unbanned! Click here to re-join - ${RepentanceConfig.inviteLink}")
         }
     }
