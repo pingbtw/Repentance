@@ -19,6 +19,7 @@ class JoinListener(
         val appealGuild = config.getAppealGuildConfig(config.appealGuild)!!
         val dataUtil = DatabaseUtility(config)
         val joinAppealGuild: Boolean = event.guild.idLong == appealGuild.appealGuild
+        val joinPrimaryGuild: Boolean = event.guild.idLong == primaryGuild.primaryGuild
         val userId = event.user.id.toString()
         val hasMadeAppeal: Boolean = dataUtil.checkNewJoinHasAppealed(userId)
 
@@ -27,15 +28,15 @@ class JoinListener(
                     .sendMessage("${event.user.asMention} has requested an un-ban").queue()
         }
 
-        if (joinAppealGuild && hasMadeAppeal) {
+        if (joinAppealGuild && !hasMadeAppeal) {
             event.jda.getGuildById(primaryGuild.primaryGuild)
                     .getTextChannelById(primaryGuild.appealChannel)
                         .sendMessage("User has joined without an appeal and has been removed").queue()
-            event.jda.getGuildById(appealGuild.appealGuild).controller.kick(event.user.id.toString()).queue()
+            event.jda.getGuildById(appealGuild.appealGuild).controller.kick(event.user.id).queue()
         }
 
-        if (event.guild.idLong == primaryGuild.primaryGuild && userInGuild(event, event.user)) {
-            event.jda.getGuildById(appealGuild.appealGuild).controller.kick(event.user.id.toString()).queue()
+        if (joinPrimaryGuild && userInGuild(event, event.user)) {
+            event.jda.getGuildById(appealGuild.appealGuild).controller.kick(event.user.id).queue()
             event.jda.getGuildById(appealGuild.appealGuild)
                     .getTextChannelById(appealGuild.appealResponseChannel)
                         .sendMessage("${event.user.asMention} has been un-banned and removed from the guild.")
